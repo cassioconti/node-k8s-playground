@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cassionode-svc
+  namespace: services
+  annotations:
+    kubernetes.io/ingress.allow-http: "false"
+    kubernetes.io/ingress.global-static-ip-name: cassio-cf
+spec:
+  tls:
+  - secretName: cassio-cf
+  rules:
+  - http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: cassionode-svc
+          servicePort: 8080

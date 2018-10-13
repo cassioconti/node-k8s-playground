@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: cassionode-svc
+  namespace: services
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cassionode-svc
+  template:
+    metadata:
+      labels:
+        app: cassionode-svc
+    spec:
+      containers:
+      - name: cassionode-svc
+        image: docker.io/cassioconti/cassionode-svc:v1
+        ports:
+        - containerPort: 8080
