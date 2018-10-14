@@ -12,7 +12,11 @@ spec:
   rules:
   - http:
       paths:
-      - path: /*
+      - path: /
         backend:
           serviceName: cassionode-svc
+          servicePort: 8080
+      - path: /*
+        backend:
+          serviceName: advent
           servicePort: 8080
